@@ -10,7 +10,7 @@ public class listoffiles {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		FileInputStream fis=new FileInputStream("file2.txt");
+		FileInputStream fis=new FileInputStream("welcomeFile.txt");
 		BufferedInputStream bis=new BufferedInputStream(fis);
 		int size=bis.available();//returns the size of the file
 		byte[] buffer=new byte[size];
