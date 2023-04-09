@@ -5,21 +5,22 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class listoffiles {
 
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		FileInputStream fis=new FileInputStream("welcomeFile.txt");
-		BufferedInputStream bis=new BufferedInputStream(fis);
-		int size=bis.available();//returns the size of the file
-		byte[] buffer=new byte[size];
-		bis.read(buffer);
-		String s=new String(buffer);//converts byte[] into String
-		System.out.println(s);
-		bis.close();
-		fis.close();
+	public static void main(String[] args) throws IOException {		
+		System.out.println("Welcome");
+		System.out.println("Application Name: File Handler");
+		System.out.println("Developer Detail: Rupali Vaishnav");
+		
 		int ch;
+		String path;
+		System.out.println("Enter the file Path: ");
+		Scanner pathSc=new Scanner(System.in);
+		path=pathSc.nextLine();
 		do {
 		System.out.println("User can choose any one option from below list");
 		System.out.println("1: To display current file names in ascending order.");
@@ -30,7 +31,7 @@ public class listoffiles {
 		ch=sc.nextInt();
 		switch(ch){
 		case 1: System.out.println("Current files in ascending order"); 
-		File directoryPath = new File("/Users/rupalivaishnav/Documents/March2023/Day4proj1");
+		File directoryPath = new File(path);
 		String[] list = directoryPath.list();
 		Arrays.sort(list);
 		System.out.println("File name: "+Arrays.toString(list));
@@ -48,7 +49,7 @@ public class listoffiles {
 					System.out.println("Enter a file to add in existing directory");
 					Scanner sc1=new Scanner(System.in);
 					String file=sc1.nextLine();
-					File f0 = new File("/Users/rupalivaishnav/Documents/March2023/Day4proj1/"+file);   
+					File f0 = new File(path+file);   
 			        if (f0.createNewFile()) {  
 			                   System.out.println("File " + f0.getName() + " is created successfully.");  
 			        } else {  
@@ -60,7 +61,7 @@ public class listoffiles {
 					System.out.println("Enter a file to delete in existing directory");
 					Scanner sc2=new Scanner(System.in);
 					String file1=sc2.nextLine();
-					File f01 = new File("/Users/rupalivaishnav/Documents/March2023/Day4proj1/" +file1);   
+					File f01 = new File(path+file1);   
 			        if (f01.delete()) {  
 			                   System.out.println("File " + f01.getName() + " is deleted successfully.");  
 			        } else {  
@@ -68,10 +69,10 @@ public class listoffiles {
 			        }
 					break;
 				case 3:
-			      String pathStr = "/Users/rupalivaishnav/Documents/March2023/Day4proj1";        
+//			      String pathStr = "/Users/rupalivaishnav/Documents/March2023/Day4proj1";        
 			      System.out.println("Enter the desired file name: ");
 			      String file2 = sc.next(); 
-			      File dir = new File(pathStr);
+			      File dir = new File(path);
 			      String[] list1 = dir.list();
 			      boolean flag = false;      
 			      for (int i = 0; i < list1.length; i++) {
